@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menu — Ferro Coffee Co.</title>
+<meta name="description" content="Coffee, filter, food and retail bags at Ferro Coffee Co., Bermondsey.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Libre+Franklin:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body style="overflow-x:hidden;">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" style="position:relative; background:var(--bg-dark); mix-blend-mode:normal;">
+  <nav class="wrap">
+    <a class="logo" href="index.html">Ferro<span>.</span></a>
+    <div class="nav-links">
+      <a href="index.html#roastery">Roastery</a>
+      <a href="index.html#origins">Origins</a>
+      <a href="menu.html" style="color:var(--caramel);">Menu</a>
+      <a href="contact.html">Visit</a>
+    </div>
+    <a class="btn btn-line" href="contact.html">Find us</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav-panel" id="mobileNav">
+  <a href="index.html#roastery">Roastery</a>
+  <a href="index.html#origins">Origins</a>
+  <a href="menu.html">Menu</a>
+  <a href="contact.html">Visit</a>
+</div>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="section-label">Menu</span>
+      <h1>Coffee, filter, and what's left of the pastries.</h1>
+      <p>Prices change slightly with each new roast — ask at the counter if something's not on the board yet.</p>
+    </div>
+  </section>
+
+  <section class="static-section">
+    <div class="wrap" style="max-width:820px;">
+
+      <div class="menu-cat">Coffee</div>
+      <div class="menu-grid">
+        <div class="menu-item"><div><h3>Espresso</h3><p>Single origin, changes with the roast</p></div><span class="price">£2.80</span></div>
+        <div class="menu-item"><div><h3>Flat White</h3></div><span class="price">£3.40</span></div>
+        <div class="menu-item"><div><h3>Cappuccino</h3></div><span class="price">£3.40</span></div>
+        <div class="menu-item"><div><h3>Latte</h3></div><span class="price">£3.60</span></div>
+        <div class="menu-item"><div><h3>Cortado</h3></div><span class="price">£3.20</span></div>
+        <div class="menu-item"><div><h3>Piccolo</h3></div><span class="price">£3.00</span></div>
+      </div>
+
+      <div class="menu-cat">Filter</div>
+      <div class="menu-grid">
+        <div class="menu-item"><div><h3>V60, single origin</h3><p>Brewed to order — ask what's on today</p></div><span class="price">£4.20</span></div>
+        <div class="menu-item"><div><h3>Batch brew</h3></div><span class="price">£2.60</span></div>
+      </div>
+
+      <div class="menu-cat">Food</div>
+      <div class="menu-grid">
+        <div class="menu-item"><div><h3>Pastry</h3><p>From the bakery two streets over</p></div><span class="price">£3.50</span></div>
+        <div class="menu-item"><div><h3>Toastie</h3><p>Ask what's in it today</p></div><span class="price">£5.50</span></div>
+      </div>
+
+      <div class="menu-cat">Take home</div>
+      <div class="menu-grid">
+        <div class="menu-item"><div><h3>250g bag, current roast</h3><p>Roasted on site — see today's origin on the board</p></div><span class="price">£9.50</span></div>
+        <div class="menu-item"><div><h3>Monthly subscription</h3><p>One bag a month, posted or collected</p></div><span class="price">£9.00/bag</span></div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a class="logo" href="index.html">Ferro<span>.</span></a>
+    <nav class="footer-nav">
+      <a href="menu.html">Menu</a>
+      <a href="contact.html">Visit</a>
+      <a href="privacy.html">Privacy &amp; Cookies</a>
+      <button type="button" class="cookie-settings-link" id="cookieSettingsBtn">Cookie settings</button>
+    </nav>
+  </div>
+  <div class="wrap footer-legal">
+    <p>© <span id="year"></span> Ferro Coffee Co. · Example template site built by Rockwell Digital.</p>
+  </div>
+</footer>
+
+<script src="cookie-consent.js" defer></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+(function(){
+  var navToggle = document.getElementById('navToggle');
+  var mobileNav = document.getElementById('mobileNav');
+  if (navToggle && mobileNav) {
+    navToggle.addEventListener('click', function () {
+      var open = mobileNav.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+})();
+</script>
+</body>
+</html>

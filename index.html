@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ferro Coffee Co. — Small-Batch Roastery &amp; Café, Bermondsey</title>
+<meta name="description" content="Ferro Coffee Co. — a small-batch coffee roastery and café in Bermondsey, South London. Roasted six streets from the counter, poured the same way every time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Libre+Franklin:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-brand">FERRO</div>
+  <div id="loader-bar"><div id="loader-bar-fill"></div></div>
+  <div id="loader-percent">0%</div>
+</div>
+
+<!-- Fixed header -->
+<header class="site-header">
+  <nav class="wrap">
+    <a class="logo" href="index.html">Ferro<span>.</span></a>
+    <div class="nav-links">
+      <a href="#roastery">Roastery</a>
+      <a href="#origins">Origins</a>
+      <a href="menu.html">Menu</a>
+      <a href="contact.html">Visit</a>
+    </div>
+    <a class="btn btn-line" href="contact.html">Find us</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile nav panel — deliberately outside .site-header (fixed + z-index
+     there forms its own stacking context, which fought with mix-blend-mode:
+     difference and let hero content paint through). Lives at the body level
+     so its z-index is unambiguous. -->
+<div class="mobile-nav-panel" id="mobileNav">
+  <a href="#roastery">Roastery</a>
+  <a href="#origins">Origins</a>
+  <a href="menu.html">Menu</a>
+  <a href="contact.html">Visit</a>
+</div>
+
+<main id="main">
+
+  <!-- Standalone hero -->
+  <section class="hero-standalone">
+    <span class="section-label">Bermondsey, South London</span>
+    <h1 class="hero-heading">
+      <span class="word">Roasted</span> <span class="word">six</span> <span class="word">streets</span><br>
+      <span class="word">from</span> <span class="word">the</span> <span class="word">counter.</span>
+    </h1>
+    <p class="hero-tagline">Small-batch coffee, roasted on site at Ferro and poured the same way every time — no house blend that changes with the supplier.</p>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M6 14l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+    </div>
+  </section>
+
+  <!-- Canvas (frame playback) -->
+  <div class="canvas-wrap">
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <!-- Text legibility vignette (behind content, above canvas) -->
+  <div id="text-scrim"></div>
+
+  <!-- Dark overlay for stats -->
+  <div id="dark-overlay"></div>
+
+  <!-- Marquee -->
+  <div class="marquee-wrap">
+    <div class="marquee-text">SMALL BATCH — SLOW ROAST — POURED FRESH — SMALL BATCH — SLOW ROAST — POURED FRESH —</div>
+  </div>
+
+  <!-- Scroll-driven sections -->
+  <div id="scroll-container">
+
+    <section class="scroll-section section-content align-left" id="roastery"
+             data-enter="8" data-leave="24" data-animation="slide-left">
+      <div class="section-inner">
+        <span class="section-label">The roastery</span>
+        <h2 class="section-heading">One roaster. One drum. No outsourcing.</h2>
+        <p class="section-body">Every bag sold at the counter was roasted in the room behind it, on a 12kg drum roaster run by one person. When we sell out of a roast, we sell out — we don't bulk-order in a substitute to fill the shelf.</p>
+      </div>
+    </section>
+
+    <section class="scroll-section section-content align-right"
+             data-enter="26" data-leave="42" data-animation="slide-right">
+      <div class="section-inner">
+        <span class="section-label">The pour</span>
+        <h2 class="section-heading">Same ratio, same temperature, every cup.</h2>
+        <p class="section-body">Dialled in every morning before opening, checked again at midday. A flat white here tastes the same on a Tuesday as it does on a Saturday — that's the actual craft, not the latte art on top.</p>
+      </div>
+    </section>
+
+    <section class="scroll-section section-stats" data-enter="46" data-leave="64" data-animation="stagger-up">
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-number" data-value="48" data-decimals="0">0</span>
+          <span class="stat-suffix">hrs</span>
+          <span class="stat-label">Roast to cup, typical</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-value="7" data-decimals="0">0</span>
+          <span class="stat-suffix">origins</span>
+          <span class="stat-label">Sourced direct this year</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-value="12" data-decimals="0">0</span>
+          <span class="stat-suffix">kg</span>
+          <span class="stat-label">Drum roaster, on site</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-value="1" data-decimals="0">0</span>
+          <span class="stat-suffix">blend</span>
+          <span class="stat-label">Changes with the harvest, not the invoice</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="scroll-section section-content align-left" id="origins"
+             data-enter="66" data-leave="82" data-animation="clip-reveal">
+      <div class="section-inner">
+        <span class="section-label">Origins</span>
+        <h2 class="section-heading">The bag says where it's from. All of it.</h2>
+        <p class="section-body">Farm or cooperative, altitude, process, harvest date — on every retail bag, not just the ones that sound impressive. If we can't tell you where a bean came from, it doesn't go on the shelf.</p>
+      </div>
+    </section>
+
+    <section class="scroll-section section-cta align-left" data-enter="84" data-leave="100" data-animation="fade-up" data-persist="true">
+      <div class="section-inner">
+        <span class="section-label">Visit the counter</span>
+        <h2 class="section-heading">Open early. Closes when the beans run out some days.</h2>
+        <p class="section-body">Arch 12, Spa Road, Bermondsey, London SE16. Coffee to take away or drink in — no laptops after 11am on weekends, we're small.</p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="contact.html">Find us</a>
+          <a class="btn btn-line" href="menu.html">See the menu</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a class="logo" href="index.html">Ferro<span>.</span></a>
+    <nav class="footer-nav">
+      <a href="menu.html">Menu</a>
+      <a href="contact.html">Visit</a>
+      <a href="privacy.html">Privacy &amp; Cookies</a>
+      <button type="button" class="cookie-settings-link" id="cookieSettingsBtn">Cookie settings</button>
+    </nav>
+  </div>
+  <div class="wrap footer-legal">
+    <p>© <span id="year"></span> Ferro Coffee Co. · Example template site built by Rockwell Digital.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="cookie-consent.js" defer></script>
+<script src="js/app.js"></script>
+</body>
+</html>

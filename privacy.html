@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy &amp; Cookies — Ferro Coffee Co.</title>
+<meta name="description" content="How Ferro Coffee Co. handles your data, including our use of Google Analytics and cookies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Libre+Franklin:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body style="overflow-x:hidden;">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" style="position:relative; background:var(--bg-dark); mix-blend-mode:normal;">
+  <nav class="wrap">
+    <a class="logo" href="index.html">Ferro<span>.</span></a>
+    <div class="nav-links">
+      <a href="index.html#roastery">Roastery</a>
+      <a href="index.html#origins">Origins</a>
+      <a href="menu.html">Menu</a>
+      <a href="contact.html">Visit</a>
+    </div>
+    <a class="btn btn-line" href="contact.html">Find us</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav-panel" id="mobileNav">
+  <a href="index.html#roastery">Roastery</a>
+  <a href="index.html#origins">Origins</a>
+  <a href="menu.html">Menu</a>
+  <a href="contact.html">Visit</a>
+</div>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="section-label">Privacy &amp; Cookies</span>
+      <h1>What we do with your data.</h1>
+    </div>
+  </section>
+  <section class="static-section">
+    <div class="wrap" style="max-width:760px;">
+      <h3 style="font-family:var(--font-display); text-transform:uppercase;">Who we are</h3>
+      <p>Ferro Coffee Co., Arch 12, Spa Road, Bermondsey, London SE16. Contact: <a href="mailto:hello@ferrocoffee.co.uk" style="color:var(--caramel-deep); text-decoration:underline;">hello@ferrocoffee.co.uk</a>.</p>
+
+      <h3 style="font-family:var(--font-display); text-transform:uppercase; margin-top:1.6em;">Cookies we use</h3>
+      <p>This website uses Google Analytics (GA4) to understand how visitors use it — which pages get looked at, roughly how people found us, and general device/location information (like "mobile, UK"). It doesn't identify you personally, and we don't run any advertising or retargeting scripts.</p>
+      <p>You choose whether this runs. On your first visit, a banner asks you to accept or decline. If you decline, no analytics cookie is set and no data is sent to Google. You can change your mind at any time using the "Cookie settings" link in the footer of every page.</p>
+
+      <h3 style="font-family:var(--font-display); text-transform:uppercase; margin-top:1.6em;">Your rights</h3>
+      <p>You can ask what we hold about you, ask us to correct it, or ask us to delete it, at any time — email <a href="mailto:hello@ferrocoffee.co.uk" style="color:var(--caramel-deep); text-decoration:underline;">hello@ferrocoffee.co.uk</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a class="logo" href="index.html">Ferro<span>.</span></a>
+    <nav class="footer-nav">
+      <a href="menu.html">Menu</a>
+      <a href="contact.html">Visit</a>
+      <a href="privacy.html">Privacy &amp; Cookies</a>
+      <button type="button" class="cookie-settings-link" id="cookieSettingsBtn">Cookie settings</button>
+    </nav>
+  </div>
+  <div class="wrap footer-legal">
+    <p>© <span id="year"></span> Ferro Coffee Co. · Example template site built by Rockwell Digital.</p>
+  </div>
+</footer>
+
+<script src="cookie-consent.js" defer></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+(function(){
+  var navToggle = document.getElementById('navToggle');
+  var mobileNav = document.getElementById('mobileNav');
+  if (navToggle && mobileNav) {
+    navToggle.addEventListener('click', function () {
+      var open = mobileNav.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visit — Ferro Coffee Co.</title>
+<meta name="description" content="Find Ferro Coffee Co. at Arch 12, Spa Road, Bermondsey, London SE16. Opening hours, map, and contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Libre+Franklin:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body style="overflow-x:hidden;">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" style="position:relative; background:var(--bg-dark); mix-blend-mode:normal;">
+  <nav class="wrap">
+    <a class="logo" href="index.html">Ferro<span>.</span></a>
+    <div class="nav-links">
+      <a href="index.html#roastery">Roastery</a>
+      <a href="index.html#origins">Origins</a>
+      <a href="menu.html">Menu</a>
+      <a href="contact.html" style="color:var(--caramel);">Visit</a>
+    </div>
+    <a class="btn btn-line" href="contact.html">Find us</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav-panel" id="mobileNav">
+  <a href="index.html#roastery">Roastery</a>
+  <a href="index.html#origins">Origins</a>
+  <a href="menu.html">Menu</a>
+  <a href="contact.html">Visit</a>
+</div>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="section-label">Visit</span>
+      <h1>Arch 12, Spa Road.</h1>
+      <p>Bermondsey, London SE16. Two minutes from South Bermondsey station, on the corner facing the railway arches.</p>
+    </div>
+  </section>
+
+  <section class="static-section">
+    <div class="wrap contact-grid">
+      <div>
+        <form class="contact-form" action="mailto:hello@ferrocoffee.co.uk" method="post" enctype="text/plain">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="Name" required>
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email" required>
+          </div>
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="Message" placeholder="Wholesale enquiries, subscriptions, or just say hello."></textarea>
+          </div>
+          <button type="submit" class="btn btn-solid">Send message</button>
+        </form>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-display); text-transform:uppercase; font-size:1.3rem;">Opening hours</h3>
+        <div class="hours-list">
+          <div><span>Monday – Friday</span><span>07:30 – 16:00</span></div>
+          <div><span>Saturday</span><span>08:30 – 16:00</span></div>
+          <div><span>Sunday</span><span>09:00 – 15:00</span></div>
+        </div>
+        <p style="margin-top:22px;">Bags sell out some days — if you want a specific origin, call ahead: <a href="tel:+442079460217" style="color:var(--caramel-deep); text-decoration:underline;">020 7946 0217</a></p>
+        <div class="contact-map">
+          <iframe title="Ferro Coffee Co. location" loading="lazy" src="https://www.google.com/maps?q=Spa+Road+Bermondsey+London+SE16&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a class="logo" href="index.html">Ferro<span>.</span></a>
+    <nav class="footer-nav">
+      <a href="menu.html">Menu</a>
+      <a href="contact.html">Visit</a>
+      <a href="privacy.html">Privacy &amp; Cookies</a>
+      <button type="button" class="cookie-settings-link" id="cookieSettingsBtn">Cookie settings</button>
+    </nav>
+  </div>
+  <div class="wrap footer-legal">
+    <p>© <span id="year"></span> Ferro Coffee Co. · Example template site built by Rockwell Digital.</p>
+  </div>
+</footer>
+
+<script src="cookie-consent.js" defer></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+(function(){
+  var navToggle = document.getElementById('navToggle');
+  var mobileNav = document.getElementById('mobileNav');
+  if (navToggle && mobileNav) {
+    navToggle.addEventListener('click', function () {
+      var open = mobileNav.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+})();
+</script>
+</body>
+</html>

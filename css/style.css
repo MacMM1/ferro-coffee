@@ -1,0 +1,211 @@
+/* ============================================================
+   Ferro Coffee Co. — design tokens
+   Small-batch roastery, industrial-meets-warm: espresso dark,
+   cream light, one caramel/crema accent, a steel-grey nod to
+   "Ferro" (iron — the roasting drum). Canvas is the real coffee
+   pour footage; everything else stays quiet around it.
+   ============================================================ */
+:root{
+  --bg-light: #F0E4D3;
+  --bg-dark: #2B1810;
+  --text-on-light: #2B1810;
+  --text-on-dark: #F0E4D3;
+  --roast: #6B4226;
+  --caramel: #C4894A;
+  --caramel-deep: #A66F38;
+  --steel: #8A8680;
+  --line: rgba(43,24,16,0.14);
+  --line-on-dark: rgba(240,228,211,0.2);
+
+  --font-display: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+  --font-body: 'Libre Franklin', -apple-system, sans-serif;
+  --font-label: 'Space Mono', 'Courier New', monospace;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html, body{ margin:0; overflow-x: hidden; }
+body{
+  background: var(--bg-light); color: var(--text-on-light);
+  font-family: var(--font-body); line-height:1.6; -webkit-font-smoothing: antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color: inherit; text-decoration: none; }
+.wrap{ max-width: 1320px; margin:0 auto; padding: 0 32px; }
+
+h1,h2{ font-family: var(--font-display); font-weight:700; text-transform: uppercase; letter-spacing: -0.01em; margin:0; }
+
+.section-label{
+  font-family: var(--font-label); font-size:0.76rem; letter-spacing:0.1em; text-transform:uppercase; color: var(--caramel-deep);
+  display:inline-block; margin-bottom: 16px;
+}
+
+a:focus-visible, button:focus-visible{ outline:2px solid var(--caramel); outline-offset:3px; }
+.skip-link{ position:absolute; left:-999px; top:0; background:var(--caramel); color:var(--bg-dark); padding:10px 16px; z-index:1000; font-weight:700; }
+.skip-link:focus{ left:16px; top:16px; }
+
+/* ---------- Buttons ---------- */
+.btn{ display:inline-flex; align-items:center; gap:8px; font-family: var(--font-body); font-weight:600; font-size:0.94rem; padding:14px 26px; border:1.5px solid currentColor; cursor:pointer; transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out), transform 140ms var(--ease-out); }
+.btn:hover{ transform: translateY(-1px); }
+.btn-solid{ background: var(--caramel); color: var(--bg-dark); border-color: var(--caramel); }
+.btn-solid:hover{ background: var(--caramel-deep); border-color: var(--caramel-deep); }
+.btn-line{ color: inherit; }
+.btn-line:hover{ background: currentColor; }
+.btn-line:hover{ color: var(--bg-light); }
+
+/* ---------- Loader ---------- */
+#loader{
+  position: fixed; inset:0; z-index: 2000; background: var(--bg-dark); color: var(--bg-light);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 18px;
+  transition: opacity 0.6s var(--ease-out), visibility 0.6s var(--ease-out);
+}
+#loader.is-hidden{ opacity:0; visibility:hidden; pointer-events:none; }
+.loader-brand{ font-family: var(--font-display); font-size: 2.4rem; letter-spacing: 0.06em; }
+#loader-bar{ width: 220px; height:2px; background: var(--line-on-dark); }
+#loader-bar-fill{ width:0%; height:100%; background: var(--caramel); transition: width 0.2s linear; }
+#loader-percent{ font-family: var(--font-label); font-size:0.8rem; color: var(--caramel); }
+
+/* ---------- Fixed header ---------- */
+.site-header{ position: fixed; top:0; left:0; right:0; z-index: 500; padding: 22px 0; mix-blend-mode: difference; }
+.site-header nav{ display:flex; align-items:center; justify-content:space-between; }
+.logo{ font-family: var(--font-display); font-size:1.4rem; color: var(--bg-light); letter-spacing:0.02em; }
+.logo span{ color: var(--caramel); }
+.nav-links{ display:flex; gap: 30px; }
+.nav-links a{ font-family: var(--font-label); font-size:0.76rem; letter-spacing:0.08em; text-transform:uppercase; color: var(--bg-light); }
+.nav-links a:hover{ color: var(--caramel); }
+.site-header .btn-line{ color: var(--bg-light); border-color: var(--bg-light); padding:10px 18px; font-size:0.82rem; }
+.site-header .btn-line:hover{ background: var(--bg-light); color: var(--bg-dark); }
+.nav-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; margin-left:8px; }
+.nav-toggle span{ width:22px; height:1.5px; background: var(--bg-light); display:block; }
+
+/* Mobile nav panel: a body-level sibling, not nested in .site-header, so its
+   stacking is independent of the header's own fixed+z-index+blend-mode context. */
+.mobile-nav-panel{
+  display:none; position:fixed; inset:0; z-index:800;
+  background: var(--bg-dark); padding: 90px 24px 24px;
+  flex-direction:column;
+}
+.mobile-nav-panel.is-open{ display:flex; }
+.mobile-nav-panel a{ color: var(--bg-light); font-family: var(--font-label); font-size:1rem; letter-spacing:0.06em; text-transform:uppercase; padding:16px 0; border-bottom:1px solid var(--line-on-dark); }
+.mobile-nav-panel a:hover{ color: var(--caramel); }
+
+/* ---------- Hero (standalone, 100vh, solid dark bg) ---------- */
+.hero-standalone{
+  position: relative; z-index: 10; height: 100vh; background: var(--bg-dark); color: var(--bg-light);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding: 0 6vw;
+}
+.hero-heading{ font-size: clamp(3rem, 9vw, 7.5rem); line-height:0.98; }
+.hero-heading .word{ display:inline-block; overflow:hidden; }
+.hero-tagline{ margin: 28px 0 0; max-width: 46ch; font-size: 1.1rem; color: rgba(240,228,211,0.78); }
+.scroll-indicator{ position:absolute; bottom: 40px; display:flex; flex-direction:column; align-items:center; gap:8px; font-family: var(--font-label); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color: rgba(240,228,211,0.6); }
+.scroll-indicator svg{ width:16px; height:16px; animation: bob 1.8s ease-in-out infinite; }
+@keyframes bob{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(5px); } }
+
+/* ---------- Canvas (fixed, full viewport, revealed via circle-wipe) ---------- */
+.canvas-wrap{ position: fixed; inset:0; z-index:1; clip-path: circle(0% at 50% 50%); }
+#canvas{ width:100%; height:100%; display:block; }
+
+/* ---------- Text scrim ----------
+   The source footage is a full-frame photograph (no alpha, unlike a
+   transparent-background 3D render), so the subject genuinely reaches
+   into the side text zones at any reasonable IMAGE_SCALE. A permanent,
+   subtle edge vignette — not a card, no blur — keeps side-aligned text
+   legible without darkening the product itself. */
+#text-scrim{
+  position: fixed; inset:0; z-index:2; pointer-events:none;
+  background: linear-gradient(90deg, rgba(43,24,16,0.55) 0%, rgba(43,24,16,0) 24%, rgba(43,24,16,0) 76%, rgba(43,24,16,0.55) 100%);
+}
+
+/* ---------- Dark overlay (stats section only) ---------- */
+#dark-overlay{ position: fixed; inset:0; z-index:5; background: var(--bg-dark); opacity:0; pointer-events:none; }
+
+/* ---------- Marquee ---------- */
+.marquee-wrap{ position: fixed; top: 50%; left:0; width:100%; z-index:4; overflow:hidden; pointer-events:none; opacity:0; transform: translateY(-50%); }
+.marquee-text{ display:inline-block; white-space:nowrap; font-family: var(--font-display); font-weight:800; font-size: 12vw; color: var(--bg-light); mix-blend-mode: difference; letter-spacing: -0.01em; }
+
+/* ---------- Scroll container + sections ---------- */
+#scroll-container{ position: relative; height: 800vh; z-index: 10; }
+.scroll-section{ position:absolute; top:0; left:0; width:100%; opacity:0; pointer-events:none; }
+.scroll-section.is-active{ opacity:1; pointer-events:auto; }
+.section-content, .section-cta{ display:flex; align-items:center; min-height:100vh; }
+.align-left{ padding-left:6vw; padding-right:55vw; }
+.align-right{ padding-left:55vw; padding-right:6vw; justify-content:flex-end; }
+.align-left .section-inner, .align-right .section-inner{ max-width:40vw; }
+.section-heading{ font-size: clamp(2.4rem, 4.6vw, 4.2rem); line-height:1.02; margin-bottom:20px; color: var(--bg-light); text-shadow: 0 2px 20px rgba(43,24,16,0.7), 0 1px 3px rgba(43,24,16,0.9); }
+.section-body{ font-size:1.08rem; color: rgba(240,228,211,0.88); max-width:38ch; text-shadow: 0 2px 16px rgba(43,24,16,0.7), 0 1px 3px rgba(43,24,16,0.9); }
+.section-cta .hero-actions{ display:flex; gap:16px; margin-top:28px; flex-wrap:wrap; }
+
+/* Stats section — dark overlay, centered (the one exception to side-aligned text) */
+.section-stats{ display:flex; align-items:center; justify-content:center; min-height:100vh; color: var(--bg-light); }
+.stats-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap: 40px; max-width:1200px; padding: 0 6vw; }
+.stat{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px; }
+.stat-number{ font-family: var(--font-display); font-size: clamp(2.6rem,5vw,4.4rem); color: var(--caramel); line-height:1; }
+.stat-suffix{ font-family: var(--font-label); font-size:0.82rem; color: var(--caramel); }
+.stat-label{ font-family: var(--font-label); font-size:0.74rem; letter-spacing:0.04em; color: rgba(240,228,211,0.75); margin-top:8px; max-width:20ch; }
+
+/* ---------- Footer ---------- */
+.site-footer{ position: relative; z-index: 20; background: var(--bg-dark); color: var(--bg-light); }
+.footer-inner{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; padding: 40px 0; }
+.footer-nav{ display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
+.footer-nav a, .footer-nav button{ font-family: var(--font-label); font-size:0.76rem; letter-spacing:0.06em; text-transform:uppercase; color: rgba(240,228,211,0.8); }
+.footer-nav a:hover, .footer-nav button:hover{ color: var(--caramel); }
+.cookie-settings-link{ background:none; border:none; cursor:pointer; padding:0; }
+.footer-legal{ border-top:1px solid var(--line-on-dark); padding: 16px 0; font-size:0.78rem; color: rgba(240,228,211,0.55); }
+
+/* ---------- Cookie consent banner ---------- */
+.cookie-banner{ position:fixed; left:0; right:0; bottom:0; z-index:900; background: var(--bg-dark); border-top:2px solid var(--caramel); }
+.cookie-banner-inner{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; padding:18px 24px; max-width:1320px; margin:0 auto; }
+.cookie-banner-inner p{ margin:0; color: var(--bg-light); max-width:62ch; font-size:0.92rem; }
+.cookie-banner-inner a{ color: var(--bg-light); text-decoration:underline; text-underline-offset:2px; }
+.cookie-banner-actions{ display:flex; gap:10px; flex-shrink:0; }
+.cookie-banner-actions .btn{ padding:10px 18px; font-size:0.88rem; }
+.cookie-banner-actions .btn-primary{ background: var(--caramel); color: var(--bg-dark); border-color: var(--caramel); }
+.cookie-banner-actions .btn-secondary{ color: var(--bg-light); border-color: var(--bg-light); background:transparent; }
+.cookie-banner-actions .btn-secondary:hover{ background: var(--bg-light); color: var(--bg-dark); }
+@media (max-width:640px){ .cookie-banner-inner{ flex-direction:column; align-items:stretch; text-align:center; } .cookie-banner-actions{ justify-content:center; } }
+
+/* ---------- Static pages (menu.html, contact.html, privacy.html) ---------- */
+.page-hero{ padding: clamp(140px,18vw,200px) 0 60px; background: var(--bg-dark); color: var(--bg-light); }
+.page-hero h1{ font-size: clamp(2.6rem,6vw,4.6rem); text-transform:uppercase; }
+.page-hero p{ font-family: var(--font-body); text-transform:none; max-width:52ch; font-size:1.1rem; color: rgba(240,228,211,0.8); margin-top:18px; }
+.static-section{ padding: 72px 0; }
+.menu-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap:1px; background: var(--line); border:1px solid var(--line); }
+.menu-item{ background: var(--bg-light); padding: 26px 28px; display:flex; justify-content:space-between; gap:16px; align-items:baseline; }
+.menu-item h3{ font-family: var(--font-display); text-transform:none; font-size:1.2rem; font-weight:700; }
+.menu-item .price{ font-family: var(--font-label); color: var(--caramel-deep); white-space:nowrap; }
+.menu-item p{ font-family: var(--font-body); color: var(--roast); font-size:0.92rem; margin:4px 0 0; }
+.menu-cat{ font-family: var(--font-label); font-size:0.76rem; letter-spacing:0.1em; text-transform:uppercase; color: var(--caramel-deep); margin: 48px 0 16px; }
+.menu-cat:first-child{ margin-top:0; }
+
+.contact-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:56px; }
+.contact-form{ display:flex; flex-direction:column; gap:18px; }
+.form-row{ display:flex; flex-direction:column; gap:6px; }
+.form-row label{ font-family: var(--font-label); font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color: var(--roast); }
+.form-row input, .form-row textarea{ font-family: var(--font-body); font-size:1rem; padding:12px 14px; border:1px solid var(--line); background: #fff; color: var(--text-on-light); }
+.form-row textarea{ resize:vertical; min-height:110px; }
+.hours-list{ font-family: var(--font-label); font-size:0.86rem; }
+.hours-list div{ display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line); }
+.contact-map{ margin-top:24px; border:1px solid var(--line); aspect-ratio:4/3; }
+.contact-map iframe{ width:100%; height:100%; border:0; display:block; }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  .scroll-indicator svg{ animation:none; }
+  #loader{ transition:none; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 768px){
+  .nav-links{ display:none; }
+  .nav-toggle{ display:flex; }
+  .hero-heading{ font-size: clamp(2.4rem, 11vw, 4rem); }
+  #scroll-container{ height: 560vh; }
+  .align-left, .align-right{ padding-left:8vw; padding-right:8vw; justify-content:center; text-align:center; }
+  .align-left .section-inner, .align-right .section-inner{ max-width:none; }
+  #text-scrim{ background: linear-gradient(0deg, rgba(43,24,16,0.35), rgba(43,24,16,0.35)); }
+  .stats-grid{ grid-template-columns: repeat(2,1fr); gap: 32px 24px; }
+  .marquee-text{ font-size: 18vw; }
+  .contact-grid, .menu-grid{ grid-template-columns: 1fr; }
+  .footer-inner{ flex-direction:column; align-items:flex-start; }
+}
