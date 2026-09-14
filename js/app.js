@@ -1,19 +1,16 @@
 // Ferro Coffee Co. — scroll-driven canvas frame playback + section choreography
 (function () {
-  var TOTAL_FRAMES = 233;
+  var TOTAL_FRAMES = 270;
   var FRAME_PATH = function (i) { return 'frames/frame_' + String(i).padStart(4, '0') + '.webp'; };
   var IMAGE_SCALE = 0.85;
-  var FRAME_SPEED = 2.1; // product animation completes by ~1/FRAME_SPEED scroll
+  var FRAME_SPEED = 2.0; // product animation completes by ~1/FRAME_SPEED = 50% scroll
 
   var frames = [];
   var framesLoaded = 0;
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');
-  // Fixed to the site's own --steel token rather than sampled per-frame: this
-  // clip is a real café environment (machine chrome, window light, shadow),
-  // so corner pixels swing from warm cream to near-black shadow frame to
-  // frame — a moving sample would make the canvas border flicker.
-  var bgColor = '#8A8680';
+  var bgColor = '#F0E4D3';
+  var lastSampledFrame = -1;
 
   // ---------- Footer year ----------
   var yearEl = document.getElementById('year');
@@ -84,9 +81,25 @@
   }
 
   // ---------- Canvas renderer: padded cover mode ----------
+  function sampleEdgeColor(img) {
+    try {
+      var probe = document.createElement('canvas');
+      probe.width = 1; probe.height = 1;
+      var pctx = probe.getContext('2d');
+      pctx.drawImage(img, 2, 2, 1, 1, 0, 0, 1, 1);
+      var d = pctx.getImageData(0, 0, 1, 1).data;
+      bgColor = 'rgb(' + d[0] + ',' + d[1] + ',' + d[2] + ')';
+    } catch (e) { /* canvas tainted or not ready — keep previous bgColor */ }
+  }
+
   function drawFrame(index) {
     var img = frames[index - 1];
     if (!img || !img.complete || !img.naturalWidth) return;
+
+    if (index - lastSampledFrame >= 20 || lastSampledFrame === -1) {
+      sampleEdgeColor(img);
+      lastSampledFrame = index;
+    }
 
     var w = window.innerWidth, h = window.innerHeight;
     ctx.fillStyle = bgColor;
