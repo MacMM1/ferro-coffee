@@ -95,6 +95,11 @@ a:focus-visible, button:focus-visible{ outline:2px solid var(--caramel); outline
   position: relative; z-index: 10; height: 100vh; background: var(--bg-dark); color: var(--bg-light);
   display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding: 0 6vw;
 }
+/* The shared .section-label token color (--caramel-deep) only clears WCAG AA
+   against a photo backdrop's own darkening scrim — against this hero's flat
+   --bg-dark it measures 3.99:1 (axe: color-contrast, serious). Swap to the
+   lighter --caramel here, which measures ~5.7:1 on this background. */
+.hero-standalone .section-label{ color: var(--caramel); }
 .hero-heading{ font-size: clamp(3rem, 9vw, 7.5rem); line-height:0.98; }
 .hero-heading .word{ display:inline-block; overflow:hidden; }
 .hero-tagline{ margin: 28px 0 0; max-width: 46ch; font-size: 1.1rem; color: rgba(240,228,211,0.78); }
