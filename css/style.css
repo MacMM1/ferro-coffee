@@ -146,12 +146,12 @@ a:focus-visible, button:focus-visible{ outline:2px solid var(--caramel); outline
    a small centered eyebrow above them rather than a ticket header. */
 .section-stats{ display:flex; align-items:center; justify-content:center; min-height:100vh; padding: 0 6vw; }
 .roast-log{ max-width: 980px; width:100%; text-align:center; }
-/* Same fix as the hero label: --caramel-deep only clears WCAG AA against a
-   photo's own darkening scrim, not this section's flat dark overlay. */
-.roast-log-label{ display:block; margin-bottom:28px; color: var(--caramel); }
+/* "Roast Log" reuses .section-heading as-is — same size/weight/shadow as
+   every other section's heading, not a small eyebrow label. */
+.roast-log .section-heading{ margin-bottom:28px; }
 .stats-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap: 24px 64px; text-align:left; }
 .stats-grid p{
-  margin:0; font-family: var(--font-body); font-weight:500; font-size:1.35rem; line-height:1.75; color: var(--bg-light);
+  margin:0; font-family: var(--font-body); font-weight:500; font-size:1rem; line-height:1.7; color: var(--bg-light);
   text-shadow: 0 3px 18px rgba(0,0,0,0.85), 0 1px 4px rgba(0,0,0,0.95);
 }
 
