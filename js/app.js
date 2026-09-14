@@ -255,25 +255,8 @@
         ease: animType === 'scale-up' ? 'power2.out' : (animType === 'clip-reveal' ? 'power4.inOut' : 'power3.out'),
         stagger: isStagger ? 0.12 : 0
       });
-      if (section.classList.contains('section-stats')) animateCounters(section);
     }
   });
-
-  // ---------- Counter animations ----------
-  var countersPlayed = false;
-  function animateCounters(section) {
-    if (countersPlayed) return;
-    countersPlayed = true;
-    section.querySelectorAll('.stat-number').forEach(function (el) {
-      var value = parseFloat(el.dataset.value);
-      var decimals = parseInt(el.dataset.decimals || '0', 10);
-      gsap.fromTo(el, { textContent: 0 }, {
-        textContent: value, duration: 1.4, ease: 'power2.out',
-        snap: { textContent: decimals > 0 ? 1 / Math.pow(10, decimals) : 1 },
-        onUpdate: function () { el.textContent = parseFloat(el.textContent).toFixed(decimals); }
-      });
-    });
-  }
 
   // ---------- Word-split hero heading (already marked up in spans) ----------
   // Hero is a plain 100vh block in normal document flow (not fixed), so it
