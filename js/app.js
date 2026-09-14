@@ -3,7 +3,7 @@
   var TOTAL_FRAMES = 270;
   var FRAME_PATH = function (i) { return 'frames/frame_' + String(i).padStart(4, '0') + '.webp'; };
   var IMAGE_SCALE = 0.85;
-  var FRAME_SPEED = 2.0; // product animation completes by ~1/FRAME_SPEED = 50% scroll
+  var FRAME_SPEED = 1.0; // frame playback spans the full scroll range
 
   var frames = [];
   var framesLoaded = 0;
@@ -143,10 +143,8 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // ---------- Main driver: canvas frame + marquee + dark overlay, keyed to #scroll-container progress ----------
+  // ---------- Main driver: canvas frame + dark overlay, keyed to #scroll-container progress ----------
   var container = document.getElementById('scroll-container');
-  var marqueeWrap = document.querySelector('.marquee-wrap');
-  var marqueeText = document.querySelector('.marquee-text');
   var darkOverlay = document.getElementById('dark-overlay');
 
   ScrollTrigger.create({
@@ -156,26 +154,6 @@
     scrub: true,
     onUpdate: function (self) {
       updateCanvasFrame(self.progress);
-    }
-  });
-
-  // Marquee: scrubs horizontally and fades in/out across a mid-scroll range
-  if (marqueeText) {
-    gsap.to(marqueeText, {
-      xPercent: -30,
-      ease: 'none',
-      scrollTrigger: { trigger: container, start: 'top top', end: 'bottom bottom', scrub: true }
-    });
-  }
-  ScrollTrigger.create({
-    trigger: container, start: 'top top', end: 'bottom bottom', scrub: true,
-    onUpdate: function (self) {
-      var p = self.progress * 100;
-      var op = 0;
-      if (p > 18 && p < 26) op = (p - 18) / 8;
-      else if (p >= 26 && p <= 44) op = 1;
-      else if (p > 44 && p < 52) op = 1 - (p - 44) / 8;
-      if (marqueeWrap) marqueeWrap.style.opacity = Math.max(0, Math.min(1, op)) * 0.14;
     }
   });
 
@@ -297,24 +275,10 @@
     });
   }
 
-  // ---------- Circle-wipe hero reveal ----------
-  var heroSection = document.querySelector('.hero-standalone');
-  var canvasWrap = document.querySelector('.canvas-wrap');
-  ScrollTrigger.create({
-    trigger: heroSection,
-    start: 'top top',
-    end: 'bottom top',
-    scrub: true,
-    onUpdate: function (self) {
-      var p = self.progress;
-      heroSection.style.opacity = Math.max(0, 1 - p * 2.2);
-      var wipeP = Math.min(1, p / 0.35);
-      var pct = wipeP * 75;
-      canvasWrap.style.clipPath = 'circle(' + pct + '% at 50% 50%)';
-    }
-  });
-
   // ---------- Word-split hero heading (already marked up in spans) ----------
+  // Hero is a plain 100vh block in normal document flow (not fixed), so it
+  // scrolls away naturally and the fixed canvas underneath is simply there
+  // once it's gone — no added wipe/fade effect on top of that.
   gsap.set('.hero-heading .word', { y: 0, opacity: 1 });
 
   // ---------- Mobile nav / misc ----------
