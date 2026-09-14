@@ -37,6 +37,11 @@
     canvas.style.width = window.innerWidth + 'px';
     canvas.style.height = window.innerHeight + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // Setting canvas.width/height clears it. Mobile Safari (and Chrome on
+    // Android) fires `resize` mid-scroll as the browser's address bar
+    // collapses/expands — without a redraw here the canvas goes blank until
+    // the next scroll-driven update, which reads as a flash while scrolling.
+    if (frames[currentFrame - 1]) drawFrame(currentFrame);
   }
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
